@@ -1,11 +1,12 @@
 import axios from "axios";
 import { serverConfig } from "../../serverConfig/serverConfig";
 
-let appServerUrl = serverConfig.appServerUrl;
+let appServerURL = serverConfig.appServerUrl;
 
 const NewsApi = config => {
-    config.baseUrl = appServerUrl;
-    return axios(config);
+  config.baseURL = appServerURL;
+  return axios(config);
 };
-
 export default NewsApi;
+
+
