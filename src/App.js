@@ -8,6 +8,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Login from './components/Login/Login';
 export default function App() {
   return (
     <Router>
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/news" element={<News/>}/>
         <Route path="/locations" element={<Locations/>}/>
         <Route path="/categories" element={<Categories/>}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </Router>
   )

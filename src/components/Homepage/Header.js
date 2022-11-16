@@ -5,9 +5,12 @@ import catagoriesApis from '../../modules/catagoriesApis';
 import "./Header.css"
 import TopHeadLines from './TopHeadLines';
 import Main from './Main';
+import { Link } from 'react-router-dom';
 export default function Homepage() {
     const [loctions, setLocations] = useState([]);
     const [category, setCategory] = useState([]);
+    const [selectLocation, setSelectLocation] = useState();
+    const [selectCatagory, setSelectCategory] = useState();
 
     useEffect(() => {
         getAllLocations()
@@ -22,6 +25,11 @@ export default function Homepage() {
             }
         });
     };
+
+    const hello =(e) => {
+        e.preventDefault();
+        console.log(e.target.value);
+    }
 
     useEffect(() => {
         getAllCategories();
@@ -45,7 +53,7 @@ export default function Homepage() {
                 </div>
                 <div className='header-elements'>
                     <div className='locations'>
-                        <select name="Location" id="locations">
+                        <select name="Location" onClick={hello} onChange={e=>setSelectLocation(e.target.value)}>
                             <option value="Location">Select Location</option>
                             {
                                 loctions.map((location) => {
@@ -57,7 +65,7 @@ export default function Homepage() {
                         </select>
                     </div>
                     <div className='catagories'>
-                      <select name="Catagory" id="catagories">
+                      <select name="Catagory" onChange={e=>setSelectCategory(e.target.value)}>
                       <option value="Catagory">Select Catagory</option>
                             {
                                 category.map((catagory) => {
@@ -68,11 +76,17 @@ export default function Homepage() {
                             }
                         </select>
                     </div>
-                    <input type="button" className='ButtonCool' value="Login" />
+                    <button className='ButtonCool' value="Login">
+                    <Link to="/login" className="nav-link">Login</Link>
+                    </button>
                 </div>
             </div>
             <TopHeadLines />
-            <Main/>
+            <Main locations={loctions} 
+                  category={category} 
+                  selectLocation={selectLocation}
+                  selectCatagory={selectCatagory}
+                  />
         </>
     )
 }

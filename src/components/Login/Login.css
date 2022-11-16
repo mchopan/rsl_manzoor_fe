@@ -1,0 +1,23 @@
+body{
+    background-image: "https://media.giphy.com/media/4H5jdBI1AEvS2xlra6/giphy.mp4";
+}
+
+.nav-links{
+    background-color: rgb(16, 34, 34);
+    color: rgb(233, 228, 218);
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 20px;
+    margin: 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-links:hover{
+    background-color: rgb(96, 197, 197);
+    color: rgb(82, 72, 53);
+}

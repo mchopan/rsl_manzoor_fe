@@ -1,23 +1,23 @@
 import { Card, CardActionArea, CardContent, Typography } from '@mui/material'
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Header.css"
 import newsApi from '../../modules/newsApi';
 export default function TopHeadLines() {
     const [news, setNews] = useState([]);
 
     useEffect(() => {
-      getAllNews();
+        getAllNews();
     }, []);
-  
+
     // Fetch/Get News Data From DataBase
     const getAllNews = () => {
-      newsApi.getAllNews(response => {
-        if (response.status === 'success') {
-          setNews(response.data);
-        } else {
-          setNews([]);
-        }
-      });
+        newsApi.getAllNews(response => {
+            if (response.status === 'success') {
+                setNews(response.data);
+            } else {
+                setNews([]);
+            }
+        });
     };
     return (
         <>
@@ -26,17 +26,12 @@ export default function TopHeadLines() {
             </div>
             <div className='news-cards'>
                 {
-                    news.map((element) => {
-                        return (
+                    news.map((element, index) => (
+                        index < 5 && (
                             <Card key={element.id} sx={{ maxWidth: 345 }}>
                                 <CardActionArea>
                                     <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div">
-                                            {
-                                                element.newsTitle
-                                            }
-                                        </Typography>
-                                        <Typography variant="body2" color="text.secondary">
+                                        <Typography variant="h6">
                                             {
                                                 element.newsDescription
                                             }
@@ -45,10 +40,10 @@ export default function TopHeadLines() {
                                 </CardActionArea>
                             </Card>
                         )
-                    })
+                    ))
                 }
             </div>
-            <hr/>
+            <hr />
         </>
     )
 }
